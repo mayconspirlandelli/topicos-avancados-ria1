@@ -3,8 +3,9 @@ package br.ufg.inf.projetomaycon.bean;
 import java.util.Date;
 
 /**
- *
- * @author alunoinf
+ * Classe Usuario
+ * @date 09/08/14
+ * @author Maycon Spirlandelli
  */
 public class Usuario {
 
@@ -60,7 +61,7 @@ public class Usuario {
     /**
      * @return the ativo
      */
-    public boolean isAtivo() {
+    public boolean getAtivo() {
         return ativo;
     }
 

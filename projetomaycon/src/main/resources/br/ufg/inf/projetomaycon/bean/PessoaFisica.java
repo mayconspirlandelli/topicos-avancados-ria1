@@ -1,8 +1,9 @@
 package br.ufg.inf.projetomaycon.bean;
 
 /**
- *
- * @author alunoinf
+ * Classe PessoaFisica
+ * @date 09/08/14
+ * @author Maycon Spirlandelli
  */
 public class PessoaFisica {
     

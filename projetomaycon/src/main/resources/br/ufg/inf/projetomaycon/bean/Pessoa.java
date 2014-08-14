@@ -3,8 +3,9 @@ package br.ufg.inf.projetomaycon.bean;
 import java.util.List;
 
 /**
- *
- * @author alunoinf
+ * Classe Pessoa
+ * @date 09/08/14
+ * @author Maycon Spirlandelli
  */
 public class Pessoa {
     

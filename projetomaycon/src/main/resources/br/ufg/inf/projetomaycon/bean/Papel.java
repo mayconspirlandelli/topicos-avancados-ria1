@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufg.inf.projetomaycon.bean;
 
 /**
- *
- * @author alunoinf
+ * Classe Papel
+ * @date 09/08/14
+ * @author Maycon Spirlandelli
  */
 public enum Papel {
     

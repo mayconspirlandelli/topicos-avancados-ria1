@@ -1,8 +1,9 @@
 package br.ufg.inf.projetomaycon.bean;
 
 /**
- *
- * @author alunoinf
+ * Classe Endereco
+ * @date 09/08/14
+ * @author Maycon Spirlandelli
  */
 public class Endereco {
  
