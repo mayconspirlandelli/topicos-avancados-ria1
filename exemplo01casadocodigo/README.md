@@ -1,1 +1,1 @@
-Projeto de exemplo "exemplo01casadocodigo" seguindo apostila "Aplicações Java para web com JSF e JPA" para treinar JSF.
+Projeto de exemplo seguindo apostila "Aplicações Java para web com JSF e JPA" para treinar JSF.
