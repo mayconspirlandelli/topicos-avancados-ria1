@@ -8,45 +8,42 @@
 
     <ui:composition template="template_base.xhtml">
         <ui:define name="title">            
-            Produtos
+            Pedido
         </ui:define>
         <ui:define name="nav_bar">
             <ui:include src="menu.xhtml" />            
         </ui:define>
         <ui:define name="container">
+            <p:fieldset legend="Dados Pessoa" style="margin-top: 20px; margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="5">                    
+                    <p:outputLabel value="Nome:" />
+                    <p:inputText />
+                    <p:outputLabel value="Endereço:" />
+                    <p:inputText />
+                    <p:outputLabel value="Telefone:" />
+                    <p:inputText />
+                </h:panelGrid>
+            </p:fieldset>
 
-
-            <p:fieldset legend="Cadastra Produtos" style="margin-top: 20px; margin-bottom:20px">
+            <p:fieldset legend="Produto" style="margin-top: 20px; margin-bottom:20px">
                 <h:panelGrid columns="2" cellpadding="5">
-
-                    <p:outputLabel for="console"  value="Grupo:" />
-                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}">
-                        <f:selectItem itemLabel="Select One" itemValue="Selecione um grupo" />
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                        <f:selectItem itemLabel="PS4" itemValue="PS4" />
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-                    </p:selectOneMenu>
-
+                    <p:outputLabel value="Código:" />
+                    <p:inputText />
                     <p:outputLabel value="Descrição:" />
                     <p:inputText />
-                    <p:outputLabel value="NCM" />
-                    <p:inputText />
-                    <p:outputLabel value="Preço de Compra:" />
-                    <p:inputText />
-                    <p:outputLabel value="Lucro:" />
-                    <p:inputText />
-                    <p:outputLabel value="Valor:" />
+                    <p:outputLabel value="Telefone:" />
                     <p:inputText />                    
                 </h:panelGrid>
+
                 <h:panelGrid columns="3" cellpadding="5">
-                    <p:button id="btnManter" value="Manter" />
                     <p:button id="btnConsultar" value="Consultar" />
+                    <p:button id="btnAdicionar" value="Adicionar" />                    
                     <p:button id="btnLimpar" value="Limpar" />
                 </h:panelGrid>
             </p:fieldset>
-            <p:fieldset legend="Lista de Produtos" style="margin-bottom:20px">
-                <h:panelGrid columns="1" cellpadding="5">                       
 
+            <p:fieldset legend="Lista de Pedidos" style="margin-bottom:20px">
+                <h:panelGrid columns="1" cellpadding="5">
                     <h:outputText
                         value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
                         His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
@@ -54,13 +51,6 @@
                         but given to ruthless violence whenever anything stands against the good of the family." />
                 </h:panelGrid>
             </p:fieldset>
-
-
-
         </ui:define>
-
-
-
-
     </ui:composition>
 </html>

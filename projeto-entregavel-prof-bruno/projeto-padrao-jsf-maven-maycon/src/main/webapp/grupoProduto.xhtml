@@ -13,20 +13,20 @@
         <ui:define name="nav_bar">
             <ui:include src="menu.xhtml" />            
         </ui:define>
+
         <ui:define name="container">
-            <h:form>
-                <p:fieldset legend="Cadastra Grupo de Produtos" style="margin-top: 20px; margin-bottom:20px">
-                    <h:panelGrid columns="2" cellpadding="5">                        
-                        <p:outputLabel value="Descrição" />
-                        <p:inputText />
-                        <p:button id="btnManter" value="Manter" />                        
-                        <p:button id="btnLimpar" value="Limpar" />                        
-                        <!--                        <p:button outcome="productDetail" icon="ui-icon-star" title="Icon Only">
-                                                    <f:param name="productId" value="30" />
-                                                </p:button>-->
-                    </h:panelGrid>
-                </p:fieldset>
-            </h:form>
+
+            <p:fieldset legend="Cadastra Grupo de Produtos" style="margin-top: 20px; margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="5">                        
+                    <p:outputLabel value="Descrição" />
+                    <p:inputText />                    
+                </h:panelGrid>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:commandButton id="btnManter" value="Manter" action="#{}" />
+                    <p:button id="btnLimpar" value="Limpar" />
+                </h:panelGrid>
+            </p:fieldset>
+
         </ui:define>
 
         <ui:define name="grid">
@@ -40,10 +40,7 @@
                         but given to ruthless violence whenever anything stands against the good of the family." />
                 </h:panelGrid>
             </p:fieldset>
-
         </ui:define>
-
-
 
 
     </ui:composition>
