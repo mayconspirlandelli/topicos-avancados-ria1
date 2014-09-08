@@ -1,9 +1,12 @@
 package br.ufg.inf.ppjmmaycon.bean;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author Maycon Spirlandelli
  */
+@ManagedBean
 public class ProdutoBean {
     
     private Integer id;
@@ -53,4 +56,12 @@ public class ProdutoBean {
     public void setPrecoCompra(double precoCompra) {
         this.precoCompra = precoCompra;
     }    
+
+    public double getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(double lucro) {
+        this.lucro = lucro;
+    }
 }

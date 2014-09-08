@@ -1,9 +1,12 @@
 package br.ufg.inf.ppjmmaycon.bean;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author Maycon Spirlandelli
  */
+@ManagedBean
 public class GrupoProdutoBean {
     
     private Integer id;

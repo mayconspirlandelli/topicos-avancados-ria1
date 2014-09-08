@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="template_base.xhtml">
+        <ui:define name="title">
+            Produtos
+        </ui:define>
+        <ui:define name="nav_bar">
+            <ui:include src="menu.xhtml" />            
+        </ui:define>
+        <ui:define name="container">
+
+            <h:form>
+                <p:fieldset legend="Cadastra Produtos" style="margin-top: 20px; margin-bottom:20px">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        
+                        <p:outputLabel for="console"  value="Grupo:" />
+                        <p:selectOneMenu id="console" value="#{selectOneMenuView.console}">
+                            <f:selectItem itemLabel="Select One" itemValue="Selecione um grupo" />
+                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Descrição:" />
+                        <p:inputText />
+                        <p:outputLabel value="NCM" />
+                        <p:inputText />
+                        <p:outputLabel value="Preço de Compra:" />
+                        <p:inputText />
+                        <p:outputLabel value="Lucro:" />
+                        <p:inputText />
+                        <p:outputLabel value="Valor:" />
+                        <p:inputText />                        
+                        <p:button id="btnManter" value="Manter" />
+                        <p:button id="btnConsultar" value="Consultar" />
+                        <p:button id="btnLimpar" value="Limpar" />
+                        <!--                        <p:button outcome="productDetail" icon="ui-icon-star" title="Icon Only">
+                                                    <f:param name="productId" value="30" />
+                                                </p:button>-->
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:fieldset legend="Lista de Produtos" style="margin-bottom:20px">
+                    <h:panelGrid columns="1" cellpadding="5">                       
+
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:fieldset>
+
+            </h:form>
+
+        </ui:define>
+
+
+
+
+    </ui:composition>
+</html>

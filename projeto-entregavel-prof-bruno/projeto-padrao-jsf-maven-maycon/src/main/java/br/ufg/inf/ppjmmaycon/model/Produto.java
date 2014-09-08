@@ -70,4 +70,12 @@ public class Produto {
     public void setPrecoCompra(double precoCompra) {
         this.precoCompra = precoCompra;
     }
+
+    public double getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(double lucro) {
+        this.lucro = lucro;
+    }
 }

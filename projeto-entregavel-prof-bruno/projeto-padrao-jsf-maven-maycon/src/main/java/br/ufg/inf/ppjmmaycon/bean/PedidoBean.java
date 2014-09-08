@@ -3,11 +3,13 @@ package br.ufg.inf.ppjmmaycon.bean;
 import br.ufg.inf.ppjmmaycon.model.Produto;
 import java.util.Date;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Maycon Spirlandelli
  */
+@ManagedBean
 public class PedidoBean {
     
     private Integer id;
