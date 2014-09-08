@@ -1,0 +1,1 @@
+Criado o projeto "projeto-padrao-jsf-maven-maycon" da disciplina Topicos Avançado RIA 1 da Especialização em Desenvolvimento Web na INF-UFG. O projeto envolve Maven, JSF, PrimeFaces.
