@@ -1,0 +1,4 @@
+.ui-icon-deletar {
+    background-image: url("#{resources['images/delete-48.pgn']}") !important;    
+}
+

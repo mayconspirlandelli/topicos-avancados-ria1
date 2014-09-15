@@ -16,7 +16,7 @@
         <ui:define name="container">
             <p:fieldset legend="Cadastra Produtos" style="margin-top: 20px; margin-bottom:20px">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Descrição:" />
+                    <p:outputLabel value="Descrição gfsdgfds:" />
                     <p:inputText id="descricaoProduto" value="#{produtoController.produtoBean.descricao}" />
                     <p:outputLabel value="NCM" />
                     <p:inputText id="ncm" value="#{produtoController.produtoBean.ncm}" />
@@ -34,7 +34,14 @@
                 </h:panelGrid>
             </p:fieldset>
             <p:fieldset legend="Lista de Produtos" style="margin-bottom:20px">
-                <p:dataTable id="tabelaProdutos" var="produtos" value="#{produtoController.listaProduto}" paginator="true" rows="2" emptyMessage="Não há registros">
+
+                <p:growl id="mensagens" showDetail="true" />
+
+                <p:dataTable id="tabelaProdutos" var="produtos" value="#{produtoController.listaProduto}" paginator="true" rows="2" emptyMessage="Não há registros" editable="true">
+
+                    <p:ajax event="rowEdit" listener="#{produtoController.onRowEdit}" update=":form:mensagens" />
+                    <p:ajax event="rowEditCancel" listener="#{produtoController.onRowCancel}" update=":form:mensagens" />
+
                     <p:column headerText="Id" sortBy="#{produtos.id}">
                         <h:outputText value="#{produtos.id}" />
                     </p:column>
@@ -42,25 +49,41 @@
                         <h:outputText value="#{produtos.id}" />
                     </p:column>
                     <p:column headerText="Descrição" filterBy="#{produtos.descricao}">
-                        <h:outputText value="#{produtos.descricao}" />
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{produtos.descricao}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{produtos.descricao}" style="width:100%" label="Descrição"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
-                    <p:column headerText="NCM">
-                        <h:outputText value="#{produtos.ncm}" />
+                    <p:column headerText="NCM">                        
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{produtos.ncm}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{produtos.ncm}" style="width:100%" label="NCM"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
-                    <p:column headerText="Compra(R$)">
-                        <h:outputText value="#{produtos.precoCompra}" />
+                    <p:column headerText="Compra(R$)">                        
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{produtos.precoCompra}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{produtos.precoCompra}" style="width:100%" label="Compra(R$)"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
-                    <p:column headerText="Lucro(%)">
-                        <h:outputText value="#{produtos.lucro}" />
+                    <p:column headerText="Lucro(%)">                        
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{produtos.lucro}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{produtos.lucro}" style="width:100%" label="Lucro(%)"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
-                    <p:column headerText="Valor">
-                        <h:outputText value="#{produtos.valor}" />
+                    <p:column headerText="Valor">                        
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{produtos.valor}" /></f:facet>
+                            <f:facet name="input"><h:inputText value="#{produtos.valor}" style="width:100%" label="Valor"/></f:facet>
+                        </p:cellEditor>
                     </p:column>
                     <p:column>
-                        <p:commandButton value="Remover" action="#{produtoController.remover(produtos)}" update="tabelaProdutos" />
-                    </p:column>
-                    <p:column>
-                        <p:commandButton value="Atual" action="#{produtoController.editar(produtos)}" update="tabelaProdutos" />
+                        <p:commandButton value="Remover" action="#{produtoController.remover(produtos)}" update="tabelaProdutos" icon="ui-icon-deletar" />
+                        <h:graphicImage value="/resources/images/delete-48.png" width="16px"/>
+                    </p:column>                    
+                    <p:column style="width:32px">
+                        <p:rowEditor />
                     </p:column>
                 </p:dataTable>
             </p:fieldset>

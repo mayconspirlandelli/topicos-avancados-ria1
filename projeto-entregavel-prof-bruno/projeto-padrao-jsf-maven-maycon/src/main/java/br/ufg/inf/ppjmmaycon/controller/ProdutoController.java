@@ -4,8 +4,11 @@ import br.ufg.inf.ppjmmaycon.bean.ProdutoBean;
 import br.ufg.inf.ppjmmaycon.model.Produto;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -81,5 +84,15 @@ public class ProdutoController {
     
     public void editar(Produto produto) {
         //Produto produtoTemp = listaProduto.
+    }
+    
+     public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Produto editado!", ((Produto) event.getObject()).getId().toString());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edição cancelada!", ((Produto) event.getObject()).getId().toString());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
