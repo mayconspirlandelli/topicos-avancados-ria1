@@ -11,37 +11,56 @@
             Grupo de Produtos
         </ui:define>
         <ui:define name="nav_bar">
-            <ui:include src="menu.xhtml" />            
+            <ui:include src="menu.xhtml" />
         </ui:define>
 
-        <ui:define name="container">
+        <!--<h:outputScript name="jsf.js" library="javax.faces" target="head" />-->
 
+
+        <ui:define name="container">
             <p:fieldset legend="Cadastra Grupo de Produtos" style="margin-top: 20px; margin-bottom:20px">
                 <h:panelGrid columns="2" cellpadding="5">                        
                     <p:outputLabel value="Descrição" />
-                    <p:inputText />                    
+                    <p:inputText id="descricaoGrupo" value="#{grupoProdutoController.grupoProdutoBean.descricao}" required="true" />
                 </h:panelGrid>
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:commandButton id="btnManter" value="Manter" action="#{}" />
-                    <p:button id="btnLimpar" value="Limpar" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:commandButton id="btnManter" value="Manter" action="#{grupoProdutoController.cadastrar()}" />
+                    <p:commandButton id="btnLimpar" value="Limpar" action="#{grupoProdutoController.limpar()}" >                        
+                    </p:commandButton>
+
+                    <p:commandButton id="btnConsultar" value="Consultar" action="#{grupoProdutoController.listar()}">
+                        <f:ajax execute="@all" render="pngdListaGrupo tabela" event="click" />
+                    </p:commandButton>
+
                 </h:panelGrid>
             </p:fieldset>
-
         </ui:define>
 
         <ui:define name="grid">
             <p:fieldset legend="Grupo de Produtos" style="margin-bottom:20px">
-                <h:panelGrid columns="1" cellpadding="5">                       
-
-                    <h:outputText
-                        value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
-                        hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                        but given to ruthless violence whenever anything stands against the good of the family." />
+                <h:outputText id="erro" value="Nenhum registro encontrado." rendered="#{empty grupoProdutoController.listaGrupoProduto}" />
+                <h:panelGrid columns="1" cellpadding="5" id="pngdListaGrupo" >
+                    
+                    <h:dataTable border="1" id="tabela" value="#{grupoProdutoController.listaGrupoProduto}" var="grupos" rendered="#{not empty grupoProdutoController.listaGrupoProduto}" >
+                    
+                        <f:facet name="header">
+                            <h:outputText value="Grupos de Produtos" />
+                        </f:facet>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id" />
+                            </f:facet>
+                            <h:outputText value="#{grupos.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descrição" />
+                            </f:facet>
+                            <h:outputText value="#{grupos.descricao}" />
+                        </h:column>
+                    </h:dataTable>
                 </h:panelGrid>
             </p:fieldset>
         </ui:define>
-
-
     </ui:composition>
 </html>
