@@ -1,66 +1,56 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"      
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-
-    <ui:composition template="template_base.xhtml">
-        <ui:define name="title">
-            Grupo de Produtos
-        </ui:define>
-        <ui:define name="nav_bar">
-            <ui:include src="menu.xhtml" />
-        </ui:define>
-
-        <!--<h:outputScript name="jsf.js" library="javax.faces" target="head" />-->
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"      
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="template_base.xhtml">
+    <ui:define name="title">
+        Grupo de Produtos
+    </ui:define>
+    <ui:define name="nav_bar">
+        <ui:include src="menu.xhtml" />
+    </ui:define>
 
 
-        <ui:define name="container">
-            <p:fieldset legend="Cadastra Grupo de Produtos" style="margin-top: 20px; margin-bottom:20px">
-                <h:panelGrid columns="2" cellpadding="5">                        
-                    <p:outputLabel value="DescriÃ§Ã£o" />
-                    <p:inputText id="descricaoGrupo" value="#{grupoProdutoController.grupoProdutoBean.descricao}" required="true" />
-                </h:panelGrid>
-                <h:panelGrid columns="3" cellpadding="5">
-                    <p:commandButton id="btnManter" value="Manter" action="#{grupoProdutoController.cadastrar()}" />
-                    <p:commandButton id="btnLimpar" value="Limpar" action="#{grupoProdutoController.limpar()}" >                        
-                    </p:commandButton>
+    <ui:define name="container">
+        <p:fieldset legend="Cadastra Grupo de Produtos" style="margin-top: 20px; margin-bottom:20px">
+            <h:panelGrid columns="2" cellpadding="5">                        
+                <p:outputLabel value="Descrição" />
+                <p:inputText id="descricaoGrupo" value="#{grupoProdutoController.grupoProdutoBean.descricao}" required="true" />
+            </h:panelGrid>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:commandButton id="btnManter" value="Manter" action="#{grupoProdutoController.cadastrar()}" update="tabelaGrupoProdutos"/>                
+                <p:commandButton id="btnLimpar" value="Limpar" action="#{grupoProdutoController.limpar()}" >                        
+                </p:commandButton>                
+            </h:panelGrid>
+        </p:fieldset>
+    </ui:define>
 
-                    <p:commandButton id="btnConsultar" value="Consultar" action="#{grupoProdutoController.listar()}">
-                        <f:ajax execute="@all" render="pngdListaGrupo tabela" event="click" />
-                    </p:commandButton>
-
-                </h:panelGrid>
-            </p:fieldset>
-        </ui:define>
-
-        <ui:define name="grid">
-            <p:fieldset legend="Grupo de Produtos" style="margin-bottom:20px">
-                <h:outputText id="erro" value="Nenhum registro encontrado." rendered="#{empty grupoProdutoController.listaGrupoProduto}" />
-                <h:panelGrid columns="1" cellpadding="5" id="pngdListaGrupo" >
-                    
-                    <h:dataTable border="1" id="tabela" value="#{grupoProdutoController.listaGrupoProduto}" var="grupos" rendered="#{not empty grupoProdutoController.listaGrupoProduto}" >
-                    
-                        <f:facet name="header">
-                            <h:outputText value="Grupos de Produtos" />
-                        </f:facet>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Id" />
-                            </f:facet>
-                            <h:outputText value="#{grupos.id}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="DescriÃ§Ã£o" />
-                            </f:facet>
-                            <h:outputText value="#{grupos.descricao}" />
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGrid>
-            </p:fieldset>
-        </ui:define>
-    </ui:composition>
-</html>
+    <ui:define name="grid">
+        <p:fieldset legend="Lista de Grupo de Produtos" style="margin-bottom:20px">
+            <p:growl id="mensagens" showDetail="true" />
+            <p:dataTable id="tabelaGrupoProdutos" var="grupoProdutos" value="#{grupoProdutoController.listaGrupoProduto}" paginator="true" rows="2" emptyMessage="Não há registros" editable="true">
+                <p:ajax event="rowEdit" listener="#{grupoProdutoController.onRowEdit}" update=":form:mensagens" />
+                <p:ajax event="rowEditCancel" listener="#{grupoProdutoController.onRowCancel}" update=":form:mensagens" />
+                <p:column headerText="Id" sortBy="#{grupoProdutos.id}">
+                    <h:outputText value="#{grupoProdutos.id}" />
+                </p:column>                
+                <p:column headerText="Descrição" filterBy="#{grupoProdutos.descricao}">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{grupoProdutos.descricao}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{grupoProdutos.descricao}" style="width:100%" label="Descrição"/></f:facet>
+                    </p:cellEditor>
+                </p:column>                
+                <p:column style="width: 16px">
+                    <p:commandButton title="Remover" action="#{grupoProdutoController.remover(grupoProdutos)}" update="tabelaGrupoProdutos" icon="ui-icon-trash" />                        
+                </p:column>                    
+                <p:column style="width: 16px">
+                    <p:rowEditor />                        
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </ui:define>
+</ui:composition>

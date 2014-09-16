@@ -4,8 +4,11 @@ import br.ufg.inf.ppjmmaycon.bean.GrupoProdutoBean;
 import br.ufg.inf.ppjmmaycon.model.GrupoProduto;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -15,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class GrupoProdutoController {
     
-    private Integer idGrupoPrduto = 0;
+    private Integer idGrupoPrduto = 1;
     /* Tela */
     private GrupoProdutoBean grupoProdutoBean;
     /* Entidade */
@@ -43,16 +46,8 @@ public class GrupoProdutoController {
        grupoProdutoBean.setId(idGrupoPrduto++);
        grupoProduto.setId(grupoProdutoBean.getId());
        grupoProduto.setDescricao(grupoProdutoBean.getDescricao());
-       
-       //grupoProduto.setId(getGrupoProdutoBean().getId());
-       //grupoProduto.setDescricao(getGrupoProdutoBean().getDescricao());
-       
        listaGrupoProduto.add(grupoProduto);
-       
-       System.out.println("Grupo de Produtos: " + grupoProduto.getDescricao());      
-       
-       //servidro.cadastrar(grupoProduto)
-       
+       System.out.println("Grupo de Produtos: " + grupoProduto.getDescricao());             
    }
     public void listar() {        
         System.out.println("Lista de Produtos: tamanho de " + listaGrupoProduto.size());
@@ -63,6 +58,10 @@ public class GrupoProdutoController {
     }
     public void limpar() {        
         listaGrupoProduto.clear();        
+    }
+    
+    public void remover(GrupoProduto grupoProduto) {
+        listaGrupoProduto.remove(grupoProduto);
     }
 
     /**
@@ -79,4 +78,24 @@ public class GrupoProdutoController {
         this.listaGrupoProduto = listaGrupoProduto;
     }
     
+     /**
+     * Método responsável por editar um item da lista na datatable.
+     *
+     * @param event
+     */
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Produto editado!", ((GrupoProduto) event.getObject()).getId().toString());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    /**
+     * Método responsável por cancelar a operação de cancelar edição de um item
+     * da datatable.
+     *
+     * @param event
+     */
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edição cancelada!", ((GrupoProduto) event.getObject()).getId().toString());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }
