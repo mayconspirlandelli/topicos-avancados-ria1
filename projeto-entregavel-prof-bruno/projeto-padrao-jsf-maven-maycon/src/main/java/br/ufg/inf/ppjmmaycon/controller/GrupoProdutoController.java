@@ -48,14 +48,15 @@ public class GrupoProdutoController {
        grupoProduto.setDescricao(grupoProdutoBean.getDescricao());
        listaGrupoProduto.add(grupoProduto);
        System.out.println("Grupo de Produtos: " + grupoProduto.getDescricao());             
+       grupoProduto = new GrupoProduto();
    }
     public void listar() {        
         System.out.println("Lista de Produtos: tamanho de " + listaGrupoProduto.size());
-        for(GrupoProduto grupoProduto : listaGrupoProduto) {
-            //System.out.println("Id: " + grupoProduto.getId() + " Descricao: " + grupoProduto.getDescricao());            
+        for(GrupoProduto grupoProduto : listaGrupoProduto) {            
             System.out.println("Id: " + " Descricao: " + grupoProduto.getDescricao());
         }        
     }
+    
     public void limpar() {        
         listaGrupoProduto.clear();        
     }
@@ -63,17 +64,11 @@ public class GrupoProdutoController {
     public void remover(GrupoProduto grupoProduto) {
         listaGrupoProduto.remove(grupoProduto);
     }
-
-    /**
-     * @return the listaGrupoProduto
-     */
+   
     public List<GrupoProduto> getListaGrupoProduto() {
         return listaGrupoProduto;
     }
 
-    /**
-     * @param listaGrupoProduto the listaGrupoProduto to set
-     */
     public void setListaGrupoProduto(List<GrupoProduto> listaGrupoProduto) {
         this.listaGrupoProduto = listaGrupoProduto;
     }

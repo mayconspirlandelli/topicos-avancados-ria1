@@ -50,6 +50,59 @@
                     hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
                     but given to ruthless violence whenever anything stands against the good of the family." />
             </h:panelGrid>
+            
         </p:fieldset>
+        
+        <p:fieldset legend="Lista de Produtos" style="margin-bottom:20px">
+            <p:growl id="mensagens" showDetail="true" />
+            <p:dataTable id="tabelaProdutos" var="produtos" value="#{produtoController.listaProduto}" paginator="true" rows="2" emptyMessage="Não há registros" editable="true">
+                <p:ajax event="rowEdit" listener="#{produtoController.onRowEdit}" update=":form:mensagens" />
+                <p:ajax event="rowEditCancel" listener="#{produtoController.onRowCancel}" update=":form:mensagens" />
+                <p:column headerText="Id" sortBy="#{produtos.id}">
+                    <h:outputText value="#{produtos.id}" />
+                </p:column>
+                <p:column headerText="Grupo Protudo" filterBy="#{produtos.id}">
+                    <h:outputText value="#{produtos.id}" />
+                </p:column>
+                <p:column headerText="Descrição" filterBy="#{produtos.descricao}">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{produtos.descricao}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{produtos.descricao}" style="width:100%" label="Descrição"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="NCM">                        
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{produtos.ncm}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{produtos.ncm}" style="width:100%" label="NCM"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Compra(R$)">                        
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{produtos.precoCompra}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{produtos.precoCompra}" style="width:100%" label="Compra(R$)"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Lucro(%)">                        
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{produtos.lucro}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{produtos.lucro}" style="width:100%" label="Lucro(%)"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Valor">                        
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{produtos.valor}" /></f:facet>
+                        <f:facet name="input"><h:inputText value="#{produtos.valor}" style="width:100%" label="Valor"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column style="width: 16px">
+                    <p:commandButton title="Remover" action="#{produtoController.remover(produtos)}" update="tabelaProdutos" icon="ui-icon-trash" />                        
+                </p:column>                    
+                <p:column style="width: 16px">
+                    <p:rowEditor />                        
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+        
+        
     </ui:define>
 </ui:composition>
