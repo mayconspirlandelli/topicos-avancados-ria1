@@ -1,5 +1,7 @@
 package br.ufg.inf.ppjmmaycon.model;
 
+import java.util.List;
+
 /**
  *
  * @author Maycon Spirlandelli
@@ -10,6 +12,7 @@ public class Pessoa {
     private String nome;
     private String endereco;
     private String telefone;
+    private List<Pedido> pedidos;
     
     public Pessoa() {}
     
@@ -50,5 +53,19 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    /**
+     * @return the pedidos
+     */
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    /**
+     * @param pedidos the pedidos to set
+     */
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

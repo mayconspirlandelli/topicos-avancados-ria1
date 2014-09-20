@@ -18,14 +18,12 @@
             <h:panelGrid columns="2" cellpadding="5">
                 <p:messages autoUpdate="true" />
                 
-                <p:outputLabel for="grupoProdutoSelecionado"  value="Grupo:" />
-                <p:selectOneMenu id="grupoProdutoSelecionado" value="#{produtoController.grupoProdutoSelecionado}">
-                    <f:selectItem itemLabel="Select One" itemValue="" />
-                    <f:selectItems value="#{produtoController.listaSelectItemGrupoProduto}" />
+                <p:outputLabel  value="Grupo:" />
+                <p:selectOneMenu  >
+                    <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                    <f:selectItems value="#{produtoController.obterListaGrupoProduto()}" var="grupoProdutoSelecionado" itemValue="#{grupoProdutoSelecionado}" itemLabel="#{grupoProdutoSelecionado.descricao}" />
                 </p:selectOneMenu>
                 
-                
-       
                 <p:outputLabel value="Descrição:" />
                 <p:inputText id="descricaoProduto" value="#{produtoController.produtoBean.descricao}" />
                 <p:outputLabel value="NCM" />

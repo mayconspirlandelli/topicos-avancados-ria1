@@ -13,11 +13,15 @@
     <ui:define name="nav_bar">
         <ui:include src="menu.xhtml" />            
     </ui:define>
+    
+    <p:outputLabel value="Descrição:" />
+                <p:inputText id="descricaoProduto" value="#{produtoController.produtoBean.descricao}" />
+    
     <ui:define name="container">
         <p:fieldset legend="Dados Pessoa" style="margin-top: 20px; margin-bottom:20px">
             <h:panelGrid columns="2" cellpadding="5">                    
                 <p:outputLabel value="Nome:" />
-                <p:inputText />
+                <p:inputText id="nomePessoa" value=""/>
                 <p:outputLabel value="Endereço:" />
                 <p:inputText />
                 <p:outputLabel value="Telefone:" />
@@ -30,9 +34,7 @@
                 <p:outputLabel value="Código:" />
                 <p:inputText />
                 <p:outputLabel value="Descrição:" />
-                <p:inputText />
-                <p:outputLabel value="Telefone:" />
-                <p:inputText />                    
+                <p:inputText />               
             </h:panelGrid>
 
             <h:panelGrid columns="3" cellpadding="5">
@@ -40,18 +42,7 @@
                 <p:button id="btnAdicionar" value="Adicionar" />                    
                 <p:button id="btnLimpar" value="Limpar" />
             </h:panelGrid>
-        </p:fieldset>
-
-        <p:fieldset legend="Lista de Pedidos" style="margin-bottom:20px">
-            <h:panelGrid columns="1" cellpadding="5">
-                <h:outputText
-                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
-                    hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                    but given to ruthless violence whenever anything stands against the good of the family." />
-            </h:panelGrid>
-            
-        </p:fieldset>
+        </p:fieldset>       
         
         <p:fieldset legend="Lista de Produtos" style="margin-bottom:20px">
             <p:growl id="mensagens" showDetail="true" />
@@ -69,31 +60,7 @@
                         <f:facet name="output"><h:outputText value="#{produtos.descricao}" /></f:facet>
                         <f:facet name="input"><h:inputText value="#{produtos.descricao}" style="width:100%" label="Descrição"/></f:facet>
                     </p:cellEditor>
-                </p:column>
-                <p:column headerText="NCM">                        
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{produtos.ncm}" /></f:facet>
-                        <f:facet name="input"><h:inputText value="#{produtos.ncm}" style="width:100%" label="NCM"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                <p:column headerText="Compra(R$)">                        
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{produtos.precoCompra}" /></f:facet>
-                        <f:facet name="input"><h:inputText value="#{produtos.precoCompra}" style="width:100%" label="Compra(R$)"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                <p:column headerText="Lucro(%)">                        
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{produtos.lucro}" /></f:facet>
-                        <f:facet name="input"><h:inputText value="#{produtos.lucro}" style="width:100%" label="Lucro(%)"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                <p:column headerText="Valor">                        
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{produtos.valor}" /></f:facet>
-                        <f:facet name="input"><h:inputText value="#{produtos.valor}" style="width:100%" label="Valor"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
+                </p:column>                                               
                 <p:column style="width: 16px">
                     <p:commandButton title="Remover" action="#{produtoController.remover(produtos)}" update="tabelaProdutos" icon="ui-icon-trash" />                        
                 </p:column>                    

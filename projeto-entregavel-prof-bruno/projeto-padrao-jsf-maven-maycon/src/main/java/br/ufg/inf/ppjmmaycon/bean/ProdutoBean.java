@@ -15,7 +15,7 @@ public class ProdutoBean {
     private double valor;
     private double precoCompra;
     private double lucro;
-    //TODO: private GrupoProdutoBean grupoProdutoBean;
+    private GrupoProdutoBean grupoProdutoBean;
     
     public Integer getId() {
         return id;
@@ -63,5 +63,13 @@ public class ProdutoBean {
 
     public void setLucro(double lucro) {
         this.lucro = lucro;
+    }
+    
+    public GrupoProdutoBean getGrupoProdutoBean() {
+        return grupoProdutoBean;
+    }
+
+    public void setGrupoProdutoBean(GrupoProdutoBean grupoProdutoBean) {
+        this.grupoProdutoBean = grupoProdutoBean;
     }
 }

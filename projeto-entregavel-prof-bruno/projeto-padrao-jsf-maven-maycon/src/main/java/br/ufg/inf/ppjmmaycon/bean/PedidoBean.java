@@ -2,7 +2,6 @@ package br.ufg.inf.ppjmmaycon.bean;
 
 import br.ufg.inf.ppjmmaycon.model.Produto;
 import java.util.Date;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -12,58 +11,105 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class PedidoBean {
     
-    private Integer id;
-    private PessoaBean cliente;
-    private PessoaBean vendedor;
-    private double valor;
-    private Date data;
-    private List<Produto> produtos;
-
+    private Integer idPedido;    
+    private Integer idCliente;
+    private String nomeCliente;
+    private String endereco;
+    private String telefone;
+    private Integer idProduto;
+    private String descricaoProduto;
+    
     public Integer getId() {
-        return id;
+        return idPedido;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idPedido = id;
     }
 
-    public PessoaBean getCliente() {
-        return cliente;
+    /**
+     * @return the nomeCliente
+     */
+    public String getNomeCliente() {
+        return nomeCliente;
     }
 
-    public void setCliente(PessoaBean cliente) {
-        this.cliente = cliente;
+    /**
+     * @param nomeCliente the nomeCliente to set
+     */
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
 
-    public PessoaBean getVendedor() {
-        return vendedor;
+    /**
+     * @return the endereco
+     */
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setVendedor(PessoaBean vendedor) {
-        this.vendedor = vendedor;
+    /**
+     * @param endereco the endereco to set
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public double getValor() {
-        return valor;
+    /**
+     * @return the telefone
+     */
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    /**
+     * @param telefone the telefone to set
+     */
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public Date getData() {
-        return data;
+    /**
+     * @return the idProduto
+     */
+    public Integer getIdProduto() {
+        return idProduto;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    /**
+     * @param idProduto the idProduto to set
+     */
+    public void setIdProduto(Integer idProduto) {
+        this.idProduto = idProduto;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    /**
+     * @return the descricaoProduto
+     */
+    public String getDescricaoProduto() {
+        return descricaoProduto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    /**
+     * @param descricaoProduto the descricaoProduto to set
+     */
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
     }
+
+    /**
+     * @return the idCliente
+     */
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    /**
+     * @param idCliente the idCliente to set
+     */
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+   
 }

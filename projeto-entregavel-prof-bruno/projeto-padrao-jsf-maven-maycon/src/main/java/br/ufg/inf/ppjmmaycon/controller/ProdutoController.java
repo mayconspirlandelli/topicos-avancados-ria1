@@ -119,7 +119,7 @@ public class ProdutoController {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    private List<GrupoProduto> obterListaGrupoProduto() {
+    public List<GrupoProduto> obterListaGrupoProduto() {
 
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         HttpSession session = (HttpSession) externalContext.getSession(true);        
@@ -145,10 +145,6 @@ public class ProdutoController {
         }
         return listaSelectItemGrupoProduto;
     }
-
-//    public GrupoProduto getGrupoProdutoSelecionado() {
-//        return grupoProdutoSelecionado;
-//    }
 
     /**
      * @return the grupoProdutoSelecionado

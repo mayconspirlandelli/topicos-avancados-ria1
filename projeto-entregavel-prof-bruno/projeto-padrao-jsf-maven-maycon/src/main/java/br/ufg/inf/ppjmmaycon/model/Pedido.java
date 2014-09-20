@@ -1,7 +1,6 @@
 package br.ufg.inf.ppjmmaycon.model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -14,7 +13,8 @@ public class Pedido {
     private Pessoa vendedor;
     private double valor;
     private Date data;
-    private List<Produto> produtos;
+    //private List<Produto> produtos;
+    private Produto produto;
 
     public Pedido() {
     }
@@ -66,12 +66,18 @@ public class Pedido {
     public void setData(Date data) {
         this.data = data;
     }
-
-    public List<Produto> getProdutos() {
-        return produtos;
+ 
+    /**
+     * @return the produto
+     */
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }
